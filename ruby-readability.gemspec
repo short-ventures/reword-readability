@@ -3,7 +3,7 @@ $:.push File.expand_path("../lib", __FILE__)
 
 Gem::Specification.new do |s|
   s.name        = "ruby-readability"
-  s.version     = '0.8.1'
+  s.version     = '0.8.2'
   s.authors     = ["Andrew Cantino", "starrhorne", "libc", "Kyle Maxwell", "Cal Short"]
   s.email       = ["andrew@iterationlabs.com"]
   s.homepage    = "http://github.com/cantino/ruby-readability"

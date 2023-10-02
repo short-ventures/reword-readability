@@ -188,8 +188,11 @@ module Readability
       orig_title = @html.at_css('title').text.strip rescue orig_title
       cur_title = orig_title.dup
       title_had_hierarchical_separators = false
+      headings = @html.css('h1')
 
-      if cur_title =~ / [\|\-\\\/>»] /
+      if headings.present? && headings[0].text.size > 10
+        cur_title = headings[0].text
+      elsif cur_title =~ / [\|\-\\\/>»] /
         title_had_hierarchical_separators = cur_title =~ / [\\\/>»] /
         cur_title = orig_title.sub(/(.*)[\|\-\\\/>»] .*/i, "\\1")
 
@@ -197,8 +200,6 @@ module Readability
           cur_title = orig_title.sub(/[^\|\-\\\/>»]*[\|\-\\\/>»](.*)/i, "\\1")
         end
       elsif cur_title.include?(': ')
-        headings = @html.css('h1, h2')
-
         match = headings.any? {|heading| heading.text.strip == cur_title.strip}
 
         unless match
