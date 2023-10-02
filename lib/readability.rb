@@ -34,7 +34,7 @@ module Readability
         :videoRe => /http:\/\/(www\.)?(youtube|vimeo)\.com/i
     }
     
-    attr_accessor :options, :html, :best_candidate, :candidates, :best_candidate_has_image
+    attr_accessor :options, :html, :title, :best_candidate, :candidates, :best_candidate_has_image
 
     def initialize(input, options = {})
       @options = DEFAULT_OPTIONS.merge(options)
